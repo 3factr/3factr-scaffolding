@@ -18,17 +18,12 @@ __Templates features__
  |                                           iOS storyboard launch screen                                            |     *     |    *     |
  |             iOS storyboard or [FluentLayouts](https://github.com/FluentLayout/Cirrious.FluentLayout)              |     *     |
 
-See [Changelog](/CHANGELOG.md)
-
-[![Buy Me A Coffee](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/At3MQb9xX)
-
 
 ## Installation
 
  |        Platform         |      Installation and System Requirements      |                Documentation                 |                                                  Download                                                   |
  | :---------------------: | :--------------------------------------------: | :------------------------------------------: | :---------------------------------------------------------------------------------------------------------: |
  |       dotnet CLI        |       [Installation Guide](#dotnet-cli)        | [Documentation](docs/template_dotnet_cli.md) |                      [NuGet](https://www.nuget.org/packages/MvxScaffolding.Templates/)                      |
- | Visual Studio Extension | [Installation Guide](#visual-studio-extension) |     [Documentation VS 2017](docs/template_vs_2017.md) or [Documentation VS 2019](docs/template_vs_2019.md)    | [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=Plac3Hold3r.MvxScaffolding) |
 
 ## dotnet CLI
 
@@ -57,14 +52,6 @@ dotnet new --install MvxScaffolding.Templates
 ### Usage
 
 See [documentation](docs/template_dotnet_cli.md) for how to generate a solution.
-
-## Thanks
-
-- To [Windows Template Studio](https://github.com/Microsoft/WindowsTemplateStudio) community
-- To [.NET Template Engine](https://github.com/dotnet/templating) community
-- To [SideWaffle Template Creator](https://github.com/ligershark/sidewafflev2) community
-- To [MvvmCross](https://github.com/MvvmCross/MvvmCross) community
-- To [Crowdin](https://crowdin.com) for supporting localization for MvxScaffolding
 
 ## License
 
