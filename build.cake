@@ -1,3 +1,5 @@
+var currentVersion = "2.0.0";
+
 ///////////////////////////////////////////////////////////////////////////////
 // ARGUMENTS
 ///////////////////////////////////////////////////////////////////////////////
@@ -8,14 +10,6 @@ var nugetFeed = EnvironmentVariable("NUGET_FEED");
 var nugetApiKey = EnvironmentVariable("NUGET_API_KEY");
 var verbosityArg = Argument("verbosity", "Minimal");
 var verbosity = Verbosity.Minimal;
-
-//////////////////////////////////////////////////////////////////////
-// TOOLS / ADDINS
-//////////////////////////////////////////////////////////////////////
-
-#addin nuget:?package=Cake.Figlet&version=1.2.0
-#addin nuget:?package=Cake.Npx&version=1.3.0
-#addin nuget:?package=SemanticVersioning&version=1.2.0
 
 ///////////////////////////////////////////////////////////////////////////////
 // GLOBAL VARIABLES
@@ -29,8 +23,6 @@ var nuspecFile = new FilePath("./nuspec/MvxScaffolding.Templates.nuspec");
 
 SemVer.Version versionInfo = null;
 
-Information(Figlet(solutionName));
-
 ///////////////////////////////////////////////////////////////////////////////
 // SETUP / TEARDOWN
 ///////////////////////////////////////////////////////////////////////////////
@@ -39,32 +31,7 @@ Setup(context =>
 {
     var cakeVersion = typeof(ICakeContext).Assembly.GetName().Version.ToString();
 
-    bool isPR = false;
-    if (BuildSystem.IsRunningOnBitrise)
-    {
-        isPR = BuildSystem.Bitrise.Environment.PullRequest.IsPullRequest;
-    }
-
-    string[] redirectedStandardOutput = null;
-
-    Npx("standard-version",
-        args => args.Append("--dry-run"),
-        out redirectedStandardOutput);
-    
-    foreach (var line in redirectedStandardOutput)
-    {
-        Information(line);
-    }
-        
-    Regex regex = new Regex(@"(?<=\[).+?(?=\])");
-    Match match = regex.Match(redirectedStandardOutput[3]);
-
-    if (!match.Success && !isPR)
-    {
-        throw new InvalidOperationException ("Can not parse a build version number.");
-    }
-
-    versionInfo = new SemVer.Version(isPR ? "0.0.1" : match.Value);
+    versionInfo = new SemVer.Version(currentVersion);
 
     Information("Building version {0}, ({1}, {2}) using version {3} of Cake.",
         versionInfo.ToString(),
@@ -111,12 +78,6 @@ Task("Restore-NuGet-Packages").Does(() =>
     NuGetRestore("./MvxScaffolding.sln");
 });
 
-Task("Build-Release").Does(() => 
-{
-    Information("Bumping version and updating changelog...");
-    Npx("standard-version");
-});
-
 Task("Publish-NuGet-Package").Does(() => 
 {
     Information("Publishing NuGet package...");
@@ -139,7 +100,6 @@ Task("Release")
     .IsDependentOn("Clean")
     .IsDependentOn("Restore-NuGet-Packages")
     .IsDependentOn("Build-NuGet-Package")
-    .IsDependentOn("Build-Release")
     .IsDependentOn("Publish-NuGet-Package");
 
 RunTarget(target);
