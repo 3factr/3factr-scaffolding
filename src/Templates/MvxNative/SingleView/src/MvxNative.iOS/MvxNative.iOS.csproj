@@ -147,7 +147,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MvxNative.Core\MvxNative.Core.csproj">
-      <Project>{00000000-0000-2222-0000-000000000001}</Project>
+      <Project>{00000000-0000-0000-0000-000000000001}</Project>
       <Name>MvxNative.Core</Name>
     </ProjectReference>
   </ItemGroup>

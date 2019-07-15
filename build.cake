@@ -15,12 +15,6 @@ var verbosity = Verbosity.Minimal;
 #addin nuget:?package=Cake.Npx&version=1.3.0
 #addin nuget:?package=SemanticVersioning&version=1.2.0
 
-//////////////////////////////////////////////////////////////////////
-// EXTERNAL SCRIPTS
-//////////////////////////////////////////////////////////////////////
-
-#load "./build/parameters.cake"
-
 ///////////////////////////////////////////////////////////////////////////////
 // GLOBAL VARIABLES
 ///////////////////////////////////////////////////////////////////////////////
@@ -28,8 +22,6 @@ var verbosity = Verbosity.Minimal;
 using System.Text.RegularExpressions;
 
 var solutionName = "MvxScaffolding";
-var solutionPathVsix = File("./MvxScaffolding.Vsix.sln");
-var outputDirVsix = new DirectoryPath("./artifacts/Vsix");
 var outputDirNuGet = new DirectoryPath("./artifacts/NuGet");
 var nuspecFile = new FilePath("./nuspec/MvxScaffolding.Templates.nuspec");
 
@@ -83,10 +75,8 @@ Task("Clean").Does(() =>
     Information("Cleaning common files...");
     CleanDirectories("./**/bin");
     CleanDirectories("./**/obj");
-    CleanDirectories(outputDirVsix.FullPath);
     CleanDirectories(outputDirNuGet.FullPath);
 
-    EnsureDirectoryExists(outputDirVsix);
     EnsureDirectoryExists(outputDirNuGet);
 });
 
@@ -107,42 +97,6 @@ Task("Restore-NuGet-Packages").Does(() =>
     NuGetRestore("./MvxScaffolding.Vsix.sln");
 });
 
-Task("Update-Manifest-Version").Does(() =>
-{
-    var settings = new XmlPokeSettings
-    {
-        Namespaces = new Dictionary<string, string> 
-        {
-            {"vsx", "http://schemas.microsoft.com/developer/vsx-schema/2011"}
-        }
-    };
-
-    XmlPoke("./src/MvxScaffolding.Vsix/source.extension.vsixmanifest", "/vsx:PackageManifest/vsx:Metadata/vsx:Identity/@Version", 
-        versionInfo.ToString(), settings);
-});
-
-Task("Build-VSIX").Does(() => 
-{
-    Information("Building solution...");
-
-    MSBuild(solutionPathVsix, settings =>
-        settings.SetPlatformTarget(PlatformTarget.MSIL)
-            .SetMSBuildPlatform(MSBuildPlatform.x86)
-            .UseToolVersion(MSBuildToolVersion.VS2019)
-            .WithProperty("TreatWarningsAsErrors","true")
-            .SetVerbosity(Verbosity.Quiet)
-            .WithTarget("Build")
-            .SetConfiguration(configuration));
-});
-
-Task("Post-Build").Does(() => 
-{
-  Information("Moving to artifact directory...");
-
-  CopyFileToDirectory("./src/MvxScaffolding.Vsix/bin/Release/MvxScaffolding.Vsix.vsix", outputDirVsix);
-  MoveFile("./artifacts/Vsix/MvxScaffolding.Vsix.vsix", "./artifacts/Vsix/MvxScaffolding.vsix");
-});
-
 Task("Build-Release").Does(() => 
 {
     Information("Bumping version and updating changelog...");
@@ -152,26 +106,12 @@ Task("Build-Release").Does(() =>
 Task("Default")
     .IsDependentOn("Clean")
     .IsDependentOn("Restore-NuGet-Packages")
-    .IsDependentOn("Build-NuGet-Package")
-    .IsDependentOn("Update-Manifest-Version")
-    .IsDependentOn("Build-VSIX")
-    .IsDependentOn("Post-Build")
-  .Does(() =>
-{
-  
-});
+    .IsDependentOn("Build-NuGet-Package");
 
 Task("Release")
     .IsDependentOn("Clean")
     .IsDependentOn("Restore-NuGet-Packages")
     .IsDependentOn("Build-NuGet-Package")
-    .IsDependentOn("Update-Manifest-Version")
-    .IsDependentOn("Build-VSIX")
-    .IsDependentOn("Post-Build")
-    .IsDependentOn("Build-Release")
-  .Does(() =>
-{
-  
-});
+    .IsDependentOn("Build-Release");
 
 RunTarget(target);
