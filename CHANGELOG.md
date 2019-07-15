@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.4.0](https://github.com/3factr/3factr-scaffolding/compare/v1.3.0...v1.4.0) (2019-07-15)
+
+
+### Features
+
+* Update editor config ([#472](https://github.com/3factr/3factr-scaffolding/issues/472)) ([5d55ced](https://github.com/3factr/3factr-scaffolding/commit/5d55ced))
+* **deps:** Bump Xamarin.Forms ([#473](https://github.com/3factr/3factr-scaffolding/issues/473)) ([f34ca54](https://github.com/3factr/3factr-scaffolding/commit/f34ca54))
+* **deps:** Bump Xamarin.Forms in /src/Templates/MvxForms/Blank ([#477](https://github.com/3factr/3factr-scaffolding/issues/477)) ([e003b2b](https://github.com/3factr/3factr-scaffolding/commit/e003b2b))
+
+
+
 ## [1.3.0](https://github.com/Plac3hold3r/MvxScaffolding/compare/v1.2.3...v1.3.0) (2019-06-29)
 
 
