@@ -39,6 +39,12 @@ Setup(context =>
 {
     var cakeVersion = typeof(ICakeContext).Assembly.GetName().Version.ToString();
 
+    bool isPR = false;
+    if (BuildSystem.IsRunningOnBitrise)
+    {
+        isPR = BuildSystem.Bitrise.Environment.PullRequest.IsPullRequest;
+    }
+
     string[] redirectedStandardOutput = null;
 
     Npx("standard-version",
@@ -54,9 +60,11 @@ Setup(context =>
     Match match = regex.Match(redirectedStandardOutput[3]);
 
     if (!match.Success)
+    {
         throw new InvalidOperationException ("Can not parse a build version number.");
+    }
 
-    versionInfo = new SemVer.Version(match.Value);
+    versionInfo = new SemVer.Version(isPR ? "0.0.1" : match.Value);
 
     Information("Building version {0}, ({1}, {2}) using version {3} of Cake.",
         versionInfo.ToString(),
