@@ -44,6 +44,11 @@ Setup(context =>
     Npx("standard-version",
         args => args.Append("--dry-run"),
         out redirectedStandardOutput);
+    
+    foreach (var line in redirectedStandardOutput)
+    {
+        Information(line);
+    }
         
     Regex regex = new Regex(@"(?<=\[).+?(?=\])");
     Match match = regex.Match(redirectedStandardOutput[3]);
