@@ -59,7 +59,7 @@ Setup(context =>
     Regex regex = new Regex(@"(?<=\[).+?(?=\])");
     Match match = regex.Match(redirectedStandardOutput[3]);
 
-    if (!match.Success)
+    if (!match.Success && !isPR)
     {
         throw new InvalidOperationException ("Can not parse a build version number.");
     }
