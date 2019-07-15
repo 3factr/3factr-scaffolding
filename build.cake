@@ -16,6 +16,7 @@ var verbosity = Verbosity.Minimal;
 #addin nuget:?package=Cake.Figlet&version=1.2.0
 #addin nuget:?package=Cake.Npx&version=1.3.0
 #addin nuget:?package=SemanticVersioning&version=1.2.0
+#addin nuget:?package=Cake.Git&version=0.21.0
 
 ///////////////////////////////////////////////////////////////////////////////
 // GLOBAL VARIABLES
@@ -115,6 +116,7 @@ Task("Build-Release").Does(() =>
 {
     Information("Bumping version and updating changelog...");
     Npx("standard-version");
+    GitPush(".");
 });
 
 Task("Publish-NuGet-Package").Does(() => 
