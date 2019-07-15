@@ -116,7 +116,6 @@ Task("Build-Release").Does(() =>
 {
     Information("Bumping version and updating changelog...");
     Npx("standard-version");
-    GitPush(".");
 });
 
 Task("Publish-NuGet-Package").Does(() => 
