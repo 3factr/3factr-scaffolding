@@ -4,6 +4,8 @@
 
 var target = Argument("target", "Default");
 var configuration = Argument("configuration", "Release");
+var nugetFeed = EnvironmentVariable("NUGET_FEED");
+var nugetApiKey = EnvironmentVariable("NUGET_API_KEY");
 var verbosityArg = Argument("verbosity", "Minimal");
 var verbosity = Verbosity.Minimal;
 
@@ -25,7 +27,6 @@ var solutionName = "MvxScaffolding";
 var outputDirNuGet = new DirectoryPath("./artifacts/NuGet");
 var nuspecFile = new FilePath("./nuspec/MvxScaffolding.Templates.nuspec");
 
-var isRunningOnAzurePipelines = BuildSystem.IsRunningOnAzurePipelines ;
 SemVer.Version versionInfo = null;
 
 Information(Figlet(solutionName));
@@ -94,13 +95,26 @@ Task("Build-NuGet-Package").Does(() =>
 Task("Restore-NuGet-Packages").Does(() =>
 {
     Information("Restoring solution...");
-    NuGetRestore("./MvxScaffolding.Vsix.sln");
+    NuGetRestore("./MvxScaffolding.sln");
 });
 
 Task("Build-Release").Does(() => 
 {
     Information("Bumping version and updating changelog...");
     Npx("standard-version");
+});
+
+Task("Publish-NuGet-Package").Does(() => 
+{
+    Information("Publishing NuGet package...");
+    var path = outputDirNuGet.FullPath + "/*.nupkg";
+    var results = GetFiles(path);
+    var package = results.First();
+    NuGetPush(package, new NuGetPushSettings
+    {
+        Source = nugetFeed,
+        ApiKey = nugetApiKey
+    });
 });
 
 Task("Default")
@@ -112,6 +126,7 @@ Task("Release")
     .IsDependentOn("Clean")
     .IsDependentOn("Restore-NuGet-Packages")
     .IsDependentOn("Build-NuGet-Package")
-    .IsDependentOn("Build-Release");
+    .IsDependentOn("Build-Release")
+    .IsDependentOn("Publish-NuGet-Package");
 
 RunTarget(target);

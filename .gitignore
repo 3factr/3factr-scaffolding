@@ -268,3 +268,5 @@ __pycache__/
 
 # Cake tools
 tools/**
+.bitrise.secrets.yml
+bitrise.yml
