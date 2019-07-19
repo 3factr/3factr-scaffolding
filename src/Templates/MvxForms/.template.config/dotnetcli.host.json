@@ -37,10 +37,6 @@
       "longName": "include-uwp-ui-test",
       "shortName": "uwp-ui-t"
     },
-    "HasEditorConfig": {
-      "longName": "has-editor-config",
-      "shortName": "ed"
-    },
     "AppId": {
       "longName": "app-id",
       "shortName": "id"

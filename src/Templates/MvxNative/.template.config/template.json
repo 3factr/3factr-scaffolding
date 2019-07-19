@@ -202,13 +202,6 @@
           "rename": { "Shared/test/MvxNative.UWP.UI.Test/": "test/MvxNative.UWP.UI.Test/" }
         },
         {
-          "condition": "(!HasEditorConfig)",
-          "exclude": [
-            "editor.config"
-          ]
-        },
-        {
-          "condition": "(HasEditorConfig)",
           "rename": {
             "editor.config": ".editorconfig"
           }
@@ -309,12 +302,6 @@
       "datatype": "bool",
       "defaultValue": "false",
       "description": "Whether to include UWP UI test project."
-    },
-    "HasEditorConfig": {
-      "type": "parameter",
-      "datatype": "bool",
-      "defaultValue": "true",
-      "description": "Whether to include an EditorConfig in the root directory."
     },
     "ScaffoldType": {
       "type": "parameter",
