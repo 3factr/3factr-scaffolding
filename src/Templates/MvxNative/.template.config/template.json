@@ -316,26 +316,6 @@
       "defaultValue": "true",
       "description": "Whether to include an EditorConfig in the root directory."
     },
-    "SolutionProjectGrouping": {
-      "type": "parameter",
-      "datatype": "choice",
-      "defaultValue": "flat",
-      "description": "The grouping for projects into folders inside of the solution.",
-      "choices": [
-        {
-          "choice": "flat",
-          "description": "All projects are placed at the root of the solution."
-        },
-        {
-          "choice": "test-group",
-          "description": "All test projects are placed in a test folder, other projects are placed at the root of the solution."
-        },
-        {
-          "choice": "platform",
-          "description": "Projects are grouped based on their target platform."
-        }
-      ]
-    },
     "ScaffoldType": {
       "type": "parameter",
       "datatype": "choice",
@@ -367,18 +347,6 @@
     "HasAndroidXMLLayouts": {
       "type": "computed",
       "value": "(AndroidLayoutType == \"xml\")"
-    },
-    "IsFlatDir": {
-      "type": "computed",
-      "value": "(SolutionProjectGrouping == \"flat\")"
-    },
-    "IsTestGroupDir": {
-      "type": "computed",
-      "value": "(HasTests && SolutionProjectGrouping == \"test-group\")"
-    },
-    "IsPlatformDir": {
-      "type": "computed",
-      "value": "(SolutionProjectGrouping == \"platform\" && (HasAndroidProject || HasiOSProject || HasUWPProject))"
     },
     "IsSingleView": {
       "type": "computed",
@@ -452,7 +420,7 @@
     "AndroidMinSDKVersion": {
       "type": "parameter",
       "datatype": "choice",
-      "defaultValue": "19",
+      "defaultValue": "21",
       "description": "Minimum Android SDK version.",
       "choices": [
         {
@@ -512,7 +480,7 @@
           "description": "Android 4 - Ice Cream Sandwich v14"
         }
       ],
-      "replaces": "19",
+      "replaces": "21",
       "onlyIf": [
         {
           "after": "android:minSdkVersion=\""
@@ -544,6 +512,10 @@
       "defaultValue": "10.0",
       "description": "Minimum iOS SDK version.",
       "choices": [
+        {
+          "choice": "13.0",
+          "description": "iOS 13.0"
+        },
         {
           "choice": "12.1",
           "description": "iOS 12.1"

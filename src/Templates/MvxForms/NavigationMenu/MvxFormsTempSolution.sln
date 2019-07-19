@@ -45,22 +45,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvxFormsTemp.UWP.UI.Test", "test\MvxFormsTemp.UWP.UI.Test\MvxFormsTemp.UWP.UI.Test.csproj", "{00000000-1111-0000-0002-000000000004}"
 EndProject
 //#endif
-//#if (HasTests && SolutionProjectGrouping == 'test-group')
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{00000002-1111-0000-0000-000000000000}"
-EndProject
-//#endif
-//#if (HasAndroidProject && SolutionProjectGrouping == 'platform')
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Android", "Android", "{00000003-1111-0000-0000-000000000000}"
-EndProject
-//#endif
-//#if (HasiOSProject && SolutionProjectGrouping == 'platform')
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "iOS", "iOS", "{00000004-1111-0000-0000-000000000000}"
-EndProject
-//#endif
-//#if (HasUWPProject && SolutionProjectGrouping == 'platform')
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UWP", "UWP", "{00000005-1111-0000-0000-000000000000}"
-EndProject
-//#endif
 //#if (HasEditorConfig)
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "!Solution Items", "!Solution Items", "{00000001-1111-0000-0000-000000000000}"
 	ProjectSection(SolutionItems) = preProject
@@ -391,56 +375,6 @@ Global
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-//#if (IsTestGroupDir)
-	GlobalSection(NestedProjects) = preSolution
-		{00000000-1111-0000-0001-000000000001} = {00000002-1111-0000-0000-000000000000}
-//#endif
-//#if (IsTestGroupDir && HasAndroidProject && HasAndroidTestProject)
-		{00000000-1111-0000-0001-000000000002} = {00000002-1111-0000-0000-000000000000}
-//#endif
-//#if (IsTestGroupDir && HasXamarinUITestProject)
-		{00000000-1111-0000-0002-000000000005} = {00000002-1111-0000-0000-000000000000}
-//#endif
-//#if (IsTestGroupDir && HasiOSProject && HasiOSTestProject)
-		{00000000-1111-0000-0001-000000000003} = {00000002-1111-0000-0000-000000000000}
-//#endif
-//#if (IsTestGroupDir && HasUWPProject && HasUWPTestProject)
-		{00000000-1111-0000-0001-000000000004} = {00000002-1111-0000-0000-000000000000}
-//#endif
-//#if (IsTestGroupDir && HasUWPProject && HasUWPUITestProject)
-		{00000000-1111-0000-0002-000000000004} = {00000002-1111-0000-0000-000000000000}
-//#endif
-//#if (IsTestGroupDir)
-	EndGlobalSection
-//#endif
-//#if (IsPlatformDir)
-	GlobalSection(NestedProjects) = preSolution
-//#endif
-//#if (IsPlatformDir && HasAndroidProject)
-		{00000000-1111-1111-0000-000000000002} = {00000003-1111-0000-0000-000000000000}
-//#endif
-//#if (IsPlatformDir && HasAndroidProject && HasAndroidTestProject)
-		{00000000-1111-0000-0001-000000000002} = {00000003-1111-0000-0000-000000000000}
-		{00000000-1111-0000-0003-000000000002} = {00000003-1111-0000-0000-000000000000}
-//#endif
-//#if (IsPlatformDir && HasiOSProject)
-		{00000000-1111-1111-0000-000000000003} = {00000004-1111-0000-0000-000000000000}
-//#endif
-//#if (IsPlatformDir && HasiOSProject && HasiOSTestProject)
-		{00000000-1111-0000-0001-000000000003} = {00000004-1111-0000-0000-000000000000}
-//#endif
-//#if (IsPlatformDir && HasUWPProject)
-		{00000000-1111-1111-0000-000000000004} = {00000005-1111-0000-0000-000000000000}
-//#endif
-//#if (IsPlatformDir && HasUWPProject && HasUWPTestProject)
-		{00000000-1111-0000-0001-000000000004} = {00000005-1111-0000-0000-000000000000}
-//#endif
-//#if (IsPlatformDir && HasUWPProject && HasUWPUITestProject)
-		{00000000-1111-0000-0002-000000000004} = {00000005-1111-0000-0000-000000000000}
-//#endif
-//#if (IsPlatformDir)
-	EndGlobalSection
-//#endif
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1650E742-2D5F-44C4-A42E-14B7AC4C6030}
 	EndGlobalSection
