@@ -14,9 +14,6 @@ __Templates features__
  |                                            Android Nougat round icons                                             |     *     |    *     |
  |                                            Android Oreo adaptive icons                                            |     *     |    *     |
  |                                         Android support constraint layout                                         |     *     |
- |                                            Android AXML or XML layout                                             |     *     |
- |                                           iOS storyboard launch screen                                            |     *     |    *     |
- |             iOS storyboard or [FluentLayouts](https://github.com/FluentLayout/Cirrious.FluentLayout)              |     *     |
 
 
 ## Installation
@@ -48,15 +45,6 @@ To install the template run the `-i|--install` command
 ```text
 dotnet new --install MvxScaffolding.Templates
 ```
-
-### Usage
-
-See [documentation](docs/template_dotnet_cli.md) for how to generate a solution.
-
-## License
-
-
-[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FPlac3hold3r%2FMvxScaffolding.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2FPlac3hold3r%2FMvxScaffolding?ref=badge_large)
 
 ##### Third party libraries
 - [MvvmCross](https://github.com/MvvmCross/MvvmCross) is licensed under [MS-PL](https://github.com/MvvmCross/MvvmCross/blob/master/LICENSE)

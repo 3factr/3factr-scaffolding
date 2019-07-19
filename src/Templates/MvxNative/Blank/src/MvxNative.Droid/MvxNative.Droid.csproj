@@ -85,15 +85,9 @@
     <ProguardConfiguration Include="proguard.cfg" />
     <None Include="Properties\AndroidManifest.xml" />
   </ItemGroup>
-  <ItemGroup Condition=" '$(HasAndroidXMLLayouts)' != 'true' ">
-    <AndroidResource Include="Resources\layout\layout_toolbar.axml" />
-    <AndroidResource Include="Resources\layout\activity_main_container.axml" />
-  </ItemGroup>
-  <ItemGroup Condition=" '$(HasAndroidXMLLayouts)' == 'true' ">
+  <ItemGroup>
     <AndroidResource Include="Resources\layout\layout_toolbar.xml" />
     <AndroidResource Include="Resources\layout\activity_main_container.xml" />
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\values\strings.xml" />
     <AndroidResource Include="Resources\values\styles.xml" />
     <AndroidResource Include="Resources\values\colors.xml" />

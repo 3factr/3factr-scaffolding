@@ -168,8 +168,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{E9920038-A
 	ProjectSection(SolutionItems) = preProject
 		docs\nuget_docs.md = docs\nuget_docs.md
 		docs\privacy_policy.md = docs\privacy_policy.md
-		docs\release_notes.md = docs\release_notes.md
-		docs\template_dotnet_cli.md = docs\template_dotnet_cli.md
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{7D486F67-1B2A-4766-82C6-6BFD1D38F009}"

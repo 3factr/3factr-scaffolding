@@ -65,10 +65,6 @@
       "longName": "android-min-sdk",
       "shortName": "droid-sdk"
     },
-    "AndroidLayoutType": {
-      "longName": "android-layout-type",
-      "shortName": "droid-l"
-    },
     "iOSMinSDKVersion": {
       "longName": "ios-min-sdk",
       "shortName": "ios-sdk"

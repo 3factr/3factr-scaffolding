@@ -207,17 +207,6 @@
           }
         },
         {
-          "condition": "(HasAndroidXMLLayouts)",
-          "rename": {
-            "activity_main_container.axml": "activity_main_container.xml",
-            "fragment_main.axml": "fragment_main.xml",
-            "layout_toolbar.axml": "layout_toolbar.xml",
-            "fragment_navigation.axml": "fragment_navigation.xml",
-            "fragment_navigation_header.axml": "fragment_navigation_header.xml",
-            "fragment_settings.axml": "fragment_settings.xml"
-          }
-        },
-        {
           "condition": "(HasFluentLayouts)",
           "exclude": [
             "**/src/MvxNative.iOS/Views/!Base/StoryBaseViewController.cs",
@@ -264,7 +253,7 @@
     "HasCoreTestProject": {
       "type": "parameter",
       "datatype": "bool",
-      "defaultValue": "false",
+      "defaultValue": "true",
       "description": "Whether to include Core unit test project."
     },
     "HasAndroidTestProject": {
@@ -276,7 +265,7 @@
     "HasAndroidUITestProject": {
       "type": "parameter",
       "datatype": "bool",
-      "defaultValue": "false",
+      "defaultValue": "true",
       "description": "Whether to include Xamarin Android UI test project."
     },
     "HasiOSTestProject": {
@@ -330,10 +319,6 @@
     "HasFluentLayouts": {
       "type": "computed",
       "value": "(iOSLayoutType == \"fluent\")"
-    },
-    "HasAndroidXMLLayouts": {
-      "type": "computed",
-      "value": "(AndroidLayoutType == \"xml\")"
     },
     "IsSingleView": {
       "type": "computed",
@@ -471,22 +456,6 @@
       "onlyIf": [
         {
           "after": "android:minSdkVersion=\""
-        }
-      ]
-    },
-    "AndroidLayoutType": {
-      "type": "parameter",
-      "datatype": "choice",
-      "description": "The Android project layout pattern to use.",
-      "defaultValue": "axml",
-      "choices": [
-        {
-          "choice": "axml",
-          "description": "axml, Android layout format compatible with Visual Studio tooling."
-        },
-        {
-          "choice": "xml",
-          "description": "xml, Android layout format compatible with Android Studio tooling."
         }
       ]
     },

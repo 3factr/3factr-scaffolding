@@ -225,7 +225,7 @@
     "HasCoreTestProject": {
       "type": "parameter",
       "datatype": "bool",
-      "defaultValue": "false",
+      "defaultValue": "true",
       "description": "Whether to include Core unit test project."
     },
     "HasAndroidTestProject": {
