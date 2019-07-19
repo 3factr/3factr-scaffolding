@@ -1,6 +1,6 @@
 {
   "$schema": "http://json.schemastore.org/template",
-  "author": "Plac3hold3r",
+  "author": "3factr",
   "classifications": [ "Xamarin", "MvvmCross" ],
   "description": "A customizable template used to scaffold a cross platform MvvmCross application.",
   "name": "MvxScaffolding MvvmCross Native",
