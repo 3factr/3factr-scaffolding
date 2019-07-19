@@ -92,19 +92,14 @@
     {
       "modifiers": [
         {
-          "condition": "(IsSingleView)",
-          "rename": { "SingleView/": "" },
-          "exclude": [ "NavigationMenu/**", "Blank/**" ]
-        },
-        {
           "condition": "(IsNavigationMenu)",
           "rename": { "NavigationMenu/": "" },
-          "exclude": [ "SingleView/**", "Blank/**" ]
+          "exclude": [ "Blank/**" ]
         },
         {
           "condition": "(IsBlank)",
           "rename": { "Blank/": "" },
-          "exclude": [ "SingleView/**", "NavigationMenu/**" ]
+          "exclude": [ "NavigationMenu/**" ]
         },
         {
           "condition": "(!HasAndroidProject)",
@@ -277,10 +272,6 @@
     "HasTests": {
       "type": "computed",
       "value": "(HasCoreTestProject || HasAndroidTestProject || HasiOSTestProject || HasXamarinUITestProject || HasUWPTestProject || HasUWPUITestProject)"
-    },
-    "IsSingleView": {
-      "type": "computed",
-      "value": "(ScaffoldType == \"single-view\")"
     },
     "IsNavigationMenu": {
       "type": "computed",
